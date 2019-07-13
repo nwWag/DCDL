@@ -132,7 +132,7 @@ network("DCDL-Real",avg_pool=False, real_in=True,
 ```
 
 ## Datasets
-Datasets per perceptron can be extracted by generate_datasets.py. The network() call needs to be the same as before. One can determine for which layers a dataset is created, as well as the corresponding resolutions of the layers.
+Datasets per perceptron can be extracted by generate_datasets.py. The aforementioned training stores the final model, to access this model the same network() call is needed. One can determine for which layers a dataset is created, as well as the corresponding resolutions of the layers.
 
 ## SLS Rule Extraction
 The extraction (extracting_pipeline.py) utilizes the file created in the previous step. The same parameters as used for generating the datasets need to be set. One can set $k$ (the number of terms) in the config section. The SLS algorithm call has the follwing parameters.
