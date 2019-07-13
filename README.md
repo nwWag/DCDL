@@ -134,3 +134,7 @@ The extraction (extracting_pipeline.py) utilizes the file created in the previou
    zero_init  # Alternativ initialization
 ```
 
+The batch size as well as the trailing stop need to be set as Makros in the
+DCDL/parallel_sls/src/sls_mult_core.cpp
+file.
+
