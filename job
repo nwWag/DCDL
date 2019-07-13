@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH -J conv_mn        # Job name
+
+#SBATCH -o result/example.\%j.out           # Specify stdout output file where \% expands to jobID
+#SBATCH -p m2_gpu	            # Queue name
+#SBATCH -n 1                        # Total number of tasks (=cores if CPU is used)
+#SBATCH --gres=gpu:1                # Total number of GPUs requested (4 GPUs/node)
+#SBATCH --mem=8000MB                # The amount of RAM requested
+#SBATCH -t 48:00:00                 # Run time (hh_mm_ss) - 5 minutes
+
+#SBATCH -A m2_datamining            # Specify allocation to charge against
+# Next we load all modules we need. Loading these in the script ensures a consistent environment.
+module load lib/TensorFlow/1.13.1-fosscuda-2019.01-Python-3.5.6
+
+
+# Launch the executable
+# nvidia-smi
+python # INSTER PIPILINE
