@@ -51,7 +51,7 @@ def evaluate(arch):
 print("Training", flush=True)
 archs = []
 
-archs.append(network("baseline-bn_before-pool_before-ind",avg_pool=False, real_in=False,
+archs.append(network("Block8-short",avg_pool=False, real_in=False,
                     lr=1E-4, batch_size=2**8, activation=binarize_STE,
                      pool_by_stride=False, pool_before=True, pool_after=False,
                      skip=False, pool_skip=False,
