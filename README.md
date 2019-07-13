@@ -18,7 +18,7 @@ archs[-1].training(train_nn, label_train_nn, val, label_val)
 evaluate(archs[-1])
 ```
 
-into a pipeline. For the shorter DCDL-10 layers have to be disabled, no particular file is provided. In the following we describe the function call of network() that corresponds to each validated block.
+into a pipeline. For the shorter DCDL-10 layers have to be disabled, no particular file is provided. In the following we describe the function call of network() that corresponds to each validated/tested block.
 
 
 ### Block 1
@@ -37,7 +37,7 @@ network("Block 2",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_ClippedSTE,
          pool_by_stride=False, pool_before=False, pool_after=False,
          skip=False, pool_skip=False,
-         bn_before=False, bn_after=True, ind_scaling=False
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -47,7 +47,7 @@ network("Block 3",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
          pool_by_stride=False, pool_before=False, pool_after=False,
          skip=False, pool_skip=False,
-         bn_before=False, bn_after=True, ind_scaling=False
+          bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -57,7 +57,7 @@ network("Block 4",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_BetterSTE,
          pool_by_stride=False, pool_before=False, pool_after=False,
          skip=False, pool_skip=False,
-         bn_before=False, bn_after=True, ind_scaling=False
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -67,7 +67,7 @@ network("Block 5",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
          pool_by_stride=False, pool_before=True, pool_after=False,
          skip=False, pool_skip=False,
-         bn_before=False, bn_after=True, ind_scaling=False
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -77,7 +77,7 @@ network("Block 6",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
          pool_by_stride=False, pool_before=False, pool_after=True,
          skip=False, pool_skip=False,
-         bn_before=False, bn_after=True, ind_scaling=False
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -85,9 +85,9 @@ network("Block 6",avg_pool=False, real_in=False,
 ```python
 network("Block 7",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
-         pool_by_stride=False, pool_before=False, pool_after=True,
+         pool_by_stride=False, pool_before=True, pool_after=False,
          skip=True, pool_skip=True,
-         bn_before=False, bn_after=True, ind_scaling=False
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
@@ -95,9 +95,39 @@ network("Block 7",avg_pool=False, real_in=False,
 ```python
 network("Block 8",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
+         pool_by_stride=False, pool_before=True pool_after=False,
+         skip=True, pool_skip=True,
+         bn_before=True, bn_after=False, ind_scaling=True
+         )
+```
+
+### ResNet
+```python
+network("ResNet",avg_pool=True, real_in=True,
+        lr=1E-4, batch_size=2**8, activation=tf.nn.relu,
          pool_by_stride=False, pool_before=False, pool_after=True,
          skip=True, pool_skip=True,
-         bn_before=False, bn_after=True, ind_scaling=True
+         bn_before=True, bn_after=False, ind_scaling=False
+         )
+```
+
+### ResNet Binary Input
+```python
+network("ResNet-Binary",avg_pool=True, real_in=False,
+        lr=1E-4, batch_size=2**8, activation=tf.nn.relu,
+         pool_by_stride=False, pool_before=False, pool_after=True,
+         skip=True, pool_skip=True,
+         bn_before=True, bn_after=False, ind_scaling=False
+         )
+```
+
+### DCDL-Network Real-Valued Input
+```python
+network("DCDL-Real",avg_pool=False, real_in=True,
+        lr=1E-4, batch_size=2**8, activation=binarize_STE,
+         pool_by_stride=False, pool_before=True, pool_after=False,
+         skip=False, pool_skip=False,
+         bn_before=True, bn_after=False, ind_scaling=False
          )
 ```
 
