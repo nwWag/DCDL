@@ -21,7 +21,7 @@ evaluate(archs[-1])
 into a pipeline. For the shorter DCDL-10 layers have to be disabled, no particular file is provided. In the following we describe the function call of network() that corresponds to each validated block.
 
 
-Block 1
+### Block 1
 ```python
 network("Block 1",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_ClippedSTE,
@@ -31,7 +31,7 @@ network("Block 1",avg_pool=False, real_in=False,
          )
 ```
 
-Block 2
+### Block 2
 ```python
 network("Block 2",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_ClippedSTE,
@@ -41,7 +41,7 @@ network("Block 2",avg_pool=False, real_in=False,
          )
 ```
 
-Block 3
+### Block 3
 ```python
 network("Block 3",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
@@ -51,7 +51,7 @@ network("Block 3",avg_pool=False, real_in=False,
          )
 ```
 
-Block 4
+### Block 4
 ```python
 network("Block 4",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_BetterSTE,
@@ -61,7 +61,7 @@ network("Block 4",avg_pool=False, real_in=False,
          )
 ```
 
-Block 5
+### Block 5
 ```python
 network("Block 5",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
@@ -71,7 +71,7 @@ network("Block 5",avg_pool=False, real_in=False,
          )
 ```
 
-Block 6
+### Block 6
 ```python
 network("Block 6",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
@@ -81,7 +81,7 @@ network("Block 6",avg_pool=False, real_in=False,
          )
 ```
 
-Block 7
+### Block 7
 ```python
 network("Block 7",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
@@ -91,7 +91,7 @@ network("Block 7",avg_pool=False, real_in=False,
          )
 ```
 
-Block 8
+### Block 8
 ```python
 network("Block 8",avg_pool=False, real_in=False,
         lr=1E-4, batch_size=2**8, activation=binarize_STE,
