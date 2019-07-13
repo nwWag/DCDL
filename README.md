@@ -5,7 +5,7 @@ The DCDL is split into three parts. First, training a DCDL-Network. Second, gene
 Third, running SLS rule extraction.
 
 ## DCDL-Network
-This repo contains a DCDL-18 network for MNIST/Fashion-MNIST and CIFAR10 respectively. In general a network is build by adding
+This repo contains a DCDL-18 network for MNIST/Fashion-MNIST (mnist_pipeline.py) and CIFAR10 (cifar_pipeline.py) respectively. In general a network is build by adding
 
 ```python
 archs.append(network("baseline-bn_before-pool_before",avg_pool=False, real_in=False,
@@ -100,3 +100,37 @@ network("Block 8",avg_pool=False, real_in=False,
          bn_before=False, bn_after=True, ind_scaling=True
          )
 ```
+
+## Datasets
+Datasets per perceptron can be extracted by generate_datasets.py. The network() call needs to be the same as before. One can determine for which layers a dataset is created, as well as the corresponding resolutions of the layers.
+
+## SLS Rule Extraction
+The extraction (extracting_pipeline.py) utilizes the file created in the previous step. The same parameters as used for generating the datasets need to be set. One can set $k$ (the number of terms) in the config section. The SLS algorithm call has the follwing parameters.
+
+```python
+   clauses_n,  # k
+   maxSteps,  # # of Updates
+   p_g1,  # Prob of rand term in candidate
+   p_g2,  # Prob of rand literal in candidate
+   p_s,  # Prob of rand term in candidate
+   data,  # Training set
+   label,  # Training label
+   data_val,  # Validation set
+   label_val,  # Validation label
+   data_test,  # Test set
+   label_test,  # Test label
+   pos_neg,  # Storage for candidates
+   on_off,  # Mask for candidates
+   pos_neg_to_store,  # Storage for current BEST candidate
+   on_off_to_store,  # Mask for current BEST candidate
+   vector_n,  # of training instances !!!!NEEDS TO BE BIGGER THEN BATCH_SIZE!!!!
+   vector_n_val,  # # of validation instances !!!!NEEDS TO BE BIGGER THEN BATCH_SIZE!!!!
+   vector_n_test,  # # of data instances !!!!NEEDS TO BE BIGGER THEN BATCH_SIZE!!!!
+   features_n,  # # of Features
+   batch,  # If score calculation should be done batchwise
+   cold_restart,  # Restart if stuck in bad local minimum
+   decay,  # Decay factor, could be zero. Up to min_prob
+   min_prob,  # No decay below this threshold
+   zero_init  # Alternativ initialization
+```
+
