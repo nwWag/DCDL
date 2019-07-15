@@ -31,7 +31,7 @@ test, label_test = dataset.get_test()
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 def evaluate(arch):
     print("Evaluating", flush=True)
-    restored = load_network(arch)
+    restored = load_networkTrue(arch)
     size_test_nn = test.shape[0]
 
     counter = 0  # biased
@@ -51,10 +51,10 @@ def evaluate(arch):
 print("Training", flush=True)
 archs = []
 
-archs.append(network("baseline-bn_before-pool_before-ind",avg_pool=False, real_in=False,
+archs.append(network("Block8-short",avg_pool=False, real_in=False,
                     lr=1E-4, batch_size=2**8, activation=binarize_STE,
                      pool_by_stride=False, pool_before=True, pool_after=False,
-                     skip=True, pool_skip=True,
+                     skip=False, pool_skip=False,
                      bn_before=True, bn_after=False, ind_scaling=True
                      ))
 archs[-1].training(train_nn, label_train_nn, val, label_val)
