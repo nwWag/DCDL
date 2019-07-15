@@ -8,7 +8,7 @@ def num_variables():
 
 class data():
     def __init__(self):
-        (train, label_train), _ = tf.keras.datasets.mnist.load_data()
+        (train, label_train), _ = tf.keras.datasets.fashion_mnist.load_data()
         targets = np.array([label_train]).reshape(-1)
         self.label_train = np.eye(classes)[targets]
 
@@ -29,7 +29,7 @@ class data():
         return np.array(t_ret), np.array(l_ret)
 
     def get_test(self):
-        _, (test, label_test) = tf.keras.datasets.mnist.load_data()
+        _, (test, label_test) = tf.keras.datasets.fashion_mnist.load_data()
         targets = np.array([label_test]).reshape(-1)
         label_test = np.eye(classes)[targets]
 

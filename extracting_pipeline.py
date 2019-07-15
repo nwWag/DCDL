@@ -17,11 +17,11 @@ def window_stack(arr, stepsize=2, width=4):
 # CONFIG +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 out_arr = []
-num_blocks, start_block = 2, 2
+num_blocks, start_block = 1,1
 pooling_at = [1, 2, 3]
-start_res_in = 14
-start_num_ex_in = 10 * 40 * 4
-k = 200
+start_res_in = 32
+start_num_ex_in = 10 * 35
+k = 500
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # PIPELINE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -59,7 +59,10 @@ for i in range(start_block - 1, num_blocks):
         training_set_padded, stepsize=2, width=4), 0).astype(np.bool) # 2,4 for pooled layer
     label_set = np.maximum(label_set, 0).astype(np.bool)
 
-    #_, unique_indices = np.unique(flat_training_set,axis=0, return_index=True)
+    #unique_instances, unique_indices = np.unique(flat_training_set,axis=0, return_index=True)
+    #unique_instances_labeled, unique_indices_labeled = np.unique(np.concatenate((flat_training_set, np.expand_dims(label_set[:,:,:,0].flatten(), axis = 1)), axis = 1),axis=0, return_index=True)
+    #print("u", unique_instances.shape)
+    #print("ul", unique_instances_labeled.shape)
 
 
     #flat_training_set = flat_training_set[unique_indices]

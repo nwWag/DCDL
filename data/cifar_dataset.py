@@ -1,7 +1,6 @@
 import numpy as np
 import tensorflow as tf
 import random
-from data.dis_grid import dis_grid_processing
 
 
 def num_variables():

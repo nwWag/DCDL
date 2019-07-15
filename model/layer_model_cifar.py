@@ -14,17 +14,17 @@ class network():
     def get_model(self, X, real_in, avg_pool, pretrain, activation, pool_by_stride, bn_before, bn_after, ind_scaling, pool_before, pool_after, skip, pool_skip):
         # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         # Global settings
-        n_filter, s_filter, drop = 256, 3, 1.
+        n_filter, s_filter, drop = 64, 3, 1.
 
         pooling = pool_by_stride or pool_after or pool_before
 
         thres = []
-        X = tf.reshape(X, (-1, 28, 28, 1))
+        X = tf.reshape(X, (-1, 32, 32, 3))
 
         # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         # Input layer
         if not real_in:
-            for i in range(1):
+            for i in range(10):
                 thres.append(input_exp(X, i, activation=activation, ind_scaling=ind_scaling))
             X = tf.concat(thres, 3)
 
@@ -113,7 +113,7 @@ class network():
         tf.reset_default_graph()
         self.lr = lr
         self.classes = 10
-        self.dtype, self.shape = tf.float32, [None, 28, 28]
+        self.dtype, self.shape = tf.float32, [None, 32, 32, 3]
         self.n_iterations, self.batch_size, self.print_every, self.check_every = 2**18, batch_size, 2**1, 2**1
         self.folder_to_save, self.name = os.path.dirname(
             os.path.realpath(__file__)) + "/stored_models/" + str(name), name
