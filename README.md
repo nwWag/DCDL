@@ -1,5 +1,8 @@
 # DCDL
-Deep Convolutional Rule Learner
+Deep Convolutional Rule Learner. A quantization approach for CNNs that can be turned into binary rules, \
+which in turn can be used to embed the network into a customized circuit. \
+
+It was my bachelor's thesis, which was evaluated here https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2021.642263/full.
 
 The DCDL is split into three parts. First, training a DCDL-Network. Second, generating training sets. 
 Third, running SLS rule extraction.
